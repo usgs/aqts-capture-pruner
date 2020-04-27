@@ -3,7 +3,7 @@ package gov.usgs.wma.waterdata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -20,12 +20,15 @@ public class TimeSeriesDao {
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
 
+	@Value("${AQTS_SCHEMA_NAME}")
+	private String aqtsSchemaName;
+
 	public Object pruneTimeSeries(String date) {
 		Object result = null;
 		try {
 			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
 					.withFunctionName(PRUNE_TIME_SERIES_DATA_FUNCTION_NAME)
-					.withSchemaName("schema_name");
+					.withSchemaName(aqtsSchemaName);
 			SqlParameterSource in = new MapSqlParameterSource().addValue("date", date);
 			result =  simpleJdbcCall.executeFunction(String.class, in);
 		} catch (Exception e) {

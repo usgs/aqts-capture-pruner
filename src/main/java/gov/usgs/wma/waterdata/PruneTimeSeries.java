@@ -14,8 +14,9 @@ public class PruneTimeSeries implements Function<RequestObject, ResultObject> {
 	public static final String FAIL_STATUS = "failed";
 	public static final String SUCCESS_STATUS = "success";
 	public static final String FAIL_MESSAGE_NULL_DATE = "date was null";
+	public static final String SUCCESS_MESSAGE = "Successfully pruned time series data";
 
-	private TimeSeriesDao tsDao;
+	private final TimeSeriesDao tsDao;
 
 	@Autowired
 	public PruneTimeSeries(TimeSeriesDao tsDao) {
@@ -25,7 +26,7 @@ public class PruneTimeSeries implements Function<RequestObject, ResultObject> {
 	@Override
 	public  ResultObject apply(RequestObject request) {
 		ResultObject result = processRequest(request);
-		if (FAIL_STATUS == result.getPruneStatus()) {
+		if (FAIL_STATUS.equals(result.getPruneStatus())) {
 			throw new RuntimeException(result.getPruneFailMessage());
 		} else {
 			return result;
@@ -40,8 +41,9 @@ public class PruneTimeSeries implements Function<RequestObject, ResultObject> {
 		if (null != date) {
 			tsDao.pruneTimeSeries(date);
 			result.setPruneStatus(SUCCESS_STATUS);
-			LOG.debug("Successfully pruned time series data");
+			LOG.debug(SUCCESS_MESSAGE);
 		} else {
+			LOG.debug(FAIL_MESSAGE_NULL_DATE);
 			result.setPruneStatus(FAIL_STATUS);
 			result.setPruneFailMessage(FAIL_MESSAGE_NULL_DATE);
 		}
