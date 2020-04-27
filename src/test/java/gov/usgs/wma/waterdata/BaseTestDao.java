@@ -53,16 +53,24 @@ import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 @DirtiesContext
 public abstract class BaseTestDao {
 
-	public static final String JANUARY_DATE = "2020-01-01 10:10:10";
-	public static final String FEBRUARY_DATE = "2020-02-01 10:10:10";
-	public static final String MARCH_DATE = "2020-03-01 10:10:10";
-	public static final String APRIL_DATE = "2020-04-01 10:10:10";
-	public static final String MAY_DATE = "2020-05-01 10:10:10";
-	public static final String JUNE_DATE = "2020-06-01 10:10:10";
-	public static final String JULY_DATE = "2020-07-01 10:10:10";
-	public static final String AUGUST_DATE = "2020-08-01 10:10:10";
-	public static final String SEPTEMBER_DATE = "2020-09-01 10:10:10";
-	public static final String OCTOBER_DATE = "2020-10-01 10:10:10";
-	public static final String NOVEMBER_DATE = "2020-11-01 10:10:10";
-	public static final String DECEMBER_DATE = "2020-12-01 10:10:10";
+	// A few date formats
+	public static final String JANUARY_TIMESTAMP = "2020-01-01 10:10:10";
+	public static final String JANUARY_DATE = "2020-01-01";
+	public static final String JANUARY_TIMESTAMP_TZ = "2020-01-01 10:10:10 -05:00";
+
+	// Test all other months
+	public static final String FEBRUARY_TIMESTAMP = "2020-02-01 10:10:10";
+	public static final String MARCH_TIMESTAMP = "2020-03-01 10:10:10";
+	public static final String APRIL_TIMESTAMP = "2020-04-01 10:10:10";
+	public static final String MAY_TIMESTAMP = "2020-05-01 10:10:10";
+	public static final String JUNE_TIMESTAMP = "2020-06-01 10:10:10";
+	public static final String JULY_TIMESTAMP = "2020-07-01 10:10:10";
+	public static final String AUGUST_TIMESTAMP = "2020-08-01 10:10:10";
+	public static final String SEPTEMBER_TIMESTAMP = "2020-09-01 10:10:10";
+	public static final String OCTOBER_TIMESTAMP = "2020-10-01 10:10:10";
+	public static final String NOVEMBER_TIMESTAMP = "2020-11-01 10:10:10";
+	public static final String DECEMBER_TIMESTAMP = "2020-12-01 10:10:10";
+
+	// Bad input
+	public static final String INVALID_DATE = "notADate";
 }
