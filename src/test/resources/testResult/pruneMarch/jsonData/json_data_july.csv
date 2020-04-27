@@ -1,2 +1,0 @@
-"json_data_id","start_time","response_time","response_code","url","api","script_name","script_pid","parameters","json_content","partition_number"
-7,"2020-07-06 14:38:09.16","2020-07-06 14:38:09.21",200,"url",API,scriptName,12345,"{}","{\"sample\": \"json\"}",7

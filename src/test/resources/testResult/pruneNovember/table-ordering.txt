@@ -1,0 +1,8 @@
+json_data_november
+time_series_approvals_november
+time_series_gap_tolerances_november
+time_series_grades_november
+time_series_header_info_november
+time_series_interpolation_types_november
+time_series_methods_november
+time_series_qualifiers_november
