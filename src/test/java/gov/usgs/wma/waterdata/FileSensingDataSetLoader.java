@@ -37,6 +37,7 @@ public class FileSensingDataSetLoader extends AbstractDataSetLoader {
 
 	private IDataSet createReplacementDataSet(IDataSet iDataSet) {
 		ReplacementDataSet replacementDataSet = new ReplacementDataSet(iDataSet);
+		replacementDataSet.addReplacementSubstring("`", "\"");
 		replacementDataSet.addReplacementObject("[today]", Date.from(Instant.now()));
 		return replacementDataSet;
 	}

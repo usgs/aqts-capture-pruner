@@ -1,8 +1,0 @@
-json_data_august
-time_series_approvals_august
-time_series_gap_tolerances_august
-time_series_grades_august
-time_series_header_info_august
-time_series_interpolation_types_august
-time_series_methods_august
-time_series_qualifiers_august
