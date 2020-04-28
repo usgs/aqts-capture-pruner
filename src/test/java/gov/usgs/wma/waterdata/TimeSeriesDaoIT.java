@@ -269,4 +269,30 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 		request.setDate(DECEMBER_TIMESTAMP);
 		tsDao.pruneTimeSeries(request.getDate());
 	}
+
+	@Test
+	@ExpectedDatabase(value="classpath:/testResult/pruneJanuary.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/pruneFebruary.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/pruneMarch.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/april.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/may.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/june.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/july.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/august.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/september.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/october.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	public void testPruneSeveralPartitions() {
+		// Represents multiple invocations of the partition pruning function if we decided to drop several months of
+		// data at a time
+		request.setDate(JANUARY_TIMESTAMP);
+		tsDao.pruneTimeSeries(request.getDate());
+
+		request.setDate(FEBRUARY_TIMESTAMP);
+		tsDao.pruneTimeSeries(request.getDate());
+
+		request.setDate(MARCH_TIMESTAMP);
+		tsDao.pruneTimeSeries(request.getDate());
+	}
 }
