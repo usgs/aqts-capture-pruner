@@ -24,11 +24,11 @@ public class PruneTimeSeriesTest {
 	public void beforeEach() {
 		pruneTs = new PruneTimeSeries(tsDao);
 		request = new RequestObject();
-		request.setDate("2020-01-01 10:10:10");
 	}
 
 	@Test
 	public void testFound() {
+		request.setDate("2020-01-01 10:10:10");
 		when(tsDao.pruneTimeSeries(anyString())).thenReturn(Object.class);
 		ResultObject result = pruneTs.apply(request);
 		assertNotNull(result);
