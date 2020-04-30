@@ -29,7 +29,7 @@ public class TimeSeriesDao {
 			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
 					.withFunctionName(PRUNE_TIME_SERIES_DATA_FUNCTION_NAME)
 					.withSchemaName(aqtsSchemaName);
-			SqlParameterSource in = new MapSqlParameterSource().addValue("date", date);
+			SqlParameterSource in = new MapSqlParameterSource().addValue("prunedate", date);
 			result =  simpleJdbcCall.executeFunction(String.class, in);
 		} catch (Exception e) {
 			// TODO for now, just throw whatever exception we encounter, harden when we have a better idea
