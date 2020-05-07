@@ -1,0 +1,8 @@
+.idea/
+aqts-capture-pruner.iml
+/application.yml
+/.flattened-pom.xml
+target/
+/.settings/
+/.classpath
+/.project

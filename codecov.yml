@@ -1,0 +1,6 @@
+
+ignore:
+  # Spring Boot Application file - no testable logic
+  - "**/Application.java"
+  # SpringBootRequestHandler -  no testable logic
+  - "**/PruneTimeSeriesHandler.java"

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<dataset>
+    <json_data_june/>
+    <time_series_approvals_june/>
+    <time_series_gap_tolerances_june/>
+    <time_series_grades_june/>
+    <time_series_header_info_june/>
+    <time_series_interpolation_types_june/>
+    <time_series_methods_june/>
+    <time_series_points_june/>
+    <time_series_qualifiers_june/>
+</dataset>

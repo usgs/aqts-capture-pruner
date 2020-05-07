@@ -1,0 +1,47 @@
+[
+  {
+    "name": "AQTS Capture Time Series Pruner",
+    "organization": "U.S. Geological Survey",
+    "description": "Prunes old time series data",
+    "version": "0.0.${revision}",
+    "status": "Development",
+
+    "permissions": {
+      "usageType": "openSource",
+      "licenses": [
+        {
+          "name": "Public Domain, CC0-1.0",
+          "URL": "https://github.com/usgs/aqts-capture-pruner/blob/master/LICENSE.md"
+        }
+      ]
+    },
+
+    "homepageURL": "https://github.com/usgs/aqts-capture-pruner",
+    "downloadURL": "https://github.com/usgs/aqts-capture-pruner/archive/master.zip",
+    "disclaimerURL": "https://github.com/usgs/aqts-capture-pruner/blob/master/LICENSE.md",
+    "repositoryUrl": "https://github.com/usgs/aqts-capture-pruner.git",
+    "vcs": "git",
+
+    "laborHours": null,
+
+    "tags": [
+      "water data",
+      "U.S. Geological Survey",
+      "USGS",
+      "wma"
+    ],
+
+    "languages": [
+      "Java"
+    ],
+
+    "contact": {
+      "name": "Mary Bucknell",
+      "email": "mbucknell@usgs.gov"
+    },
+
+    "date": {
+      "metadataLastUpdated": "2020-04-16"
+    }
+  }
+]
