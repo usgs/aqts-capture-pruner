@@ -1,5 +1,6 @@
 package gov.usgs.wma.waterdata;
 
+import java.time.LocalDate;
 import java.util.function.Function;
 
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class PruneTimeSeries implements Function<RequestObject, ResultObject> {
 
 	protected ResultObject processRequest(RequestObject request) {
 
-		String date = request.getTime();
+		LocalDate date = request.getTime();
 		ResultObject result = new ResultObject();
 
 		if (null != date) {

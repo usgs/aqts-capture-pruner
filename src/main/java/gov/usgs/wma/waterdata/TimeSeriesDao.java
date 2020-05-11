@@ -31,12 +31,13 @@ public class TimeSeriesDao {
 	@Value("${MONTHS_TO_KEEP}")
 	private int monthsToKeep;
 
-	public Object pruneTimeSeries(String date) {
+	public Object pruneTimeSeries(LocalDate date) {
 		Object result = null;
 		try {
 			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
 					.withFunctionName(PRUNE_TIME_SERIES_DATA_FUNCTION_NAME)
 					.withSchemaName(aqtsSchemaName);
+//			SqlParameterSource in = new MapSqlParameterSource().addValue("prunedate", processDate(date));
 			SqlParameterSource in = new MapSqlParameterSource().addValue("prunedate", processDate(date));
 			result =  simpleJdbcCall.executeFunction(String.class, in);
 		} catch (Exception e) {
@@ -47,8 +48,7 @@ public class TimeSeriesDao {
 		return result;
 	}
 
-	public String processDate(String date) {
-		LocalDate localDate = LocalDate.ofInstant(Instant.parse(date), ZoneId.of(ZoneOffset.UTC.getId()));
-		return localDate.minusMonths(monthsToKeep).toString();
+	public LocalDate processDate(LocalDate date) {
+		return date.minusMonths(monthsToKeep);
 	}
 }
