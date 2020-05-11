@@ -21,7 +21,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneJanuaryPartition() {
-		request.setTime(MARCH_UTC);
+		request.setTime(MARCH_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -39,7 +39,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneFebruaryPartition() {
-		request.setTime(APRIL_UTC);
+		request.setTime(APRIL_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -57,7 +57,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneMarchPartition() {
-		request.setTime(MAY_UTC);
+		request.setTime(MAY_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -75,7 +75,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneAprilPartition() {
-		request.setTime(JUNE_UTC);
+		request.setTime(JUNE_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -93,7 +93,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneMayPartition() {
-		request.setTime(JULY_UTC);
+		request.setTime(JULY_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -111,7 +111,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneJunePartition() {
-		request.setTime(AUGUST_UTC);
+		request.setTime(AUGUST_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -129,7 +129,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneJulyPartition() {
-		request.setTime(SEPTEMBER_UTC);
+		request.setTime(SEPTEMBER_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -147,7 +147,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneAugustPartition() {
-		request.setTime(OCTOBER_UTC);
+		request.setTime(OCTOBER_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -165,7 +165,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneSeptemberPartition() {
-		request.setTime(NOVEMBER_UTC);
+		request.setTime(NOVEMBER_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -183,7 +183,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneOctoberPartition() {
-		request.setTime(DECEMBER_UTC);
+		request.setTime(DECEMBER_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -201,7 +201,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testResult/pruneNovember.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testData/december.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneNovemberPartition() {
-		request.setTime(JANUARY_UTC);
+		request.setTime(JANUARY_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -219,7 +219,7 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 	@ExpectedDatabase(value="classpath:/testData/november.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/pruneDecember.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void testPruneDecemberPartition() {
-		request.setTime(FEBRUARY_UTC);
+		request.setTime(FEBRUARY_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 
@@ -241,15 +241,15 @@ public class TimeSeriesDaoIT extends BaseTestDao {
 		// data at a time
 
 		// prune January
-		request.setTime(MARCH_UTC);
+		request.setTime(MARCH_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 
 		// prune February
-		request.setTime(APRIL_UTC);
+		request.setTime(APRIL_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 
 		// prune March
-		request.setTime(MAY_UTC);
+		request.setTime(MAY_DATE);
 		tsDao.pruneTimeSeries(request.getTime());
 	}
 }

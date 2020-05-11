@@ -8,7 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 
-import static gov.usgs.wma.waterdata.BaseTestDao.JANUARY_UTC;
+import static gov.usgs.wma.waterdata.BaseTestDao.JANUARY_DATE;
 import static gov.usgs.wma.waterdata.PruneTimeSeries.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -32,7 +32,7 @@ public class PruneTimeSeriesTest {
 
 	@Test
 	public void testFound() {
-		request.setTime(JANUARY_UTC);
+		request.setTime(JANUARY_DATE);
 		when(tsDao.pruneTimeSeries(any(LocalDate.class))).thenReturn(Object.class);
 		ResultObject result = pruneTs.apply(request);
 		assertNotNull(result);

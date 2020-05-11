@@ -51,18 +51,18 @@ import java.time.LocalDate;
 public abstract class BaseTestDao {
 
 	// dates
-	public static final LocalDate JANUARY_UTC = LocalDate.parse("2020-01-01");
-	public static final LocalDate FEBRUARY_UTC = LocalDate.parse("2020-02-01");
-	public static final LocalDate MARCH_UTC = LocalDate.parse("2020-03-01");
-	public static final LocalDate APRIL_UTC = LocalDate.parse("2020-04-01");
-	public static final LocalDate MAY_UTC = LocalDate.parse("2020-05-01");
-	public static final LocalDate JUNE_UTC = LocalDate.parse("2020-06-01");
-	public static final LocalDate JULY_UTC = LocalDate.parse("2020-07-01");
-	public static final LocalDate AUGUST_UTC = LocalDate.parse("2020-08-01");
-	public static final LocalDate SEPTEMBER_UTC = LocalDate.parse("2020-09-01");
-	public static final LocalDate OCTOBER_UTC = LocalDate.parse("2020-10-01");
-	public static final LocalDate NOVEMBER_UTC = LocalDate.parse("2020-11-01");
-	public static final LocalDate DECEMBER_UTC = LocalDate.parse("2020-12-01");
+	public static final LocalDate JANUARY_DATE = LocalDate.parse("2020-01-01");
+	public static final LocalDate FEBRUARY_DATE = LocalDate.parse("2020-02-01");
+	public static final LocalDate MARCH_DATE = LocalDate.parse("2020-03-01");
+	public static final LocalDate APRIL_DATE = LocalDate.parse("2020-04-01");
+	public static final LocalDate MAY_DATE = LocalDate.parse("2020-05-01");
+	public static final LocalDate JUNE_DATE = LocalDate.parse("2020-06-01");
+	public static final LocalDate JULY_DATE = LocalDate.parse("2020-07-01");
+	public static final LocalDate AUGUST_DATE = LocalDate.parse("2020-08-01");
+	public static final LocalDate SEPTEMBER_DATE = LocalDate.parse("2020-09-01");
+	public static final LocalDate OCTOBER_DATE = LocalDate.parse("2020-10-01");
+	public static final LocalDate NOVEMBER_DATE = LocalDate.parse("2020-11-01");
+	public static final LocalDate DECEMBER_DATE = LocalDate.parse("2020-12-01");
 
 	@Autowired
 	protected TimeSeriesDao tsDao;
