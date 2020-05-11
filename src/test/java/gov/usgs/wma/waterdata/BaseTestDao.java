@@ -51,19 +51,6 @@ import java.time.LocalDate;
 public abstract class BaseTestDao {
 
 	// dates
-//	public static final String JANUARY_UTC = "2020-01-01T18:44:49Z";
-//	public static final String FEBRUARY_UTC = "2020-02-01T10:10:10Z";
-//	public static final String MARCH_UTC = "2020-03-01T10:10:10Z";
-//	public static final String APRIL_UTC = "2020-04-01T10:10:10Z";
-//	public static final String MAY_UTC = "2020-05-01T10:10:10Z";
-//	public static final String JUNE_UTC = "2020-06-01T10:10:10Z";
-//	public static final String JULY_UTC = "2020-07-01T10:10:10Z";
-//	public static final String AUGUST_UTC = "2020-08-01T10:10:10Z";
-//	public static final String SEPTEMBER_UTC = "2020-09-01T10:10:10Z";
-//	public static final String OCTOBER_UTC = "2020-10-01T10:10:10Z";
-//	public static final String NOVEMBER_UTC = "2020-11-01T10:10:10Z";
-//	public static final String DECEMBER_UTC = "2020-12-01T10:10:10Z";
-
 	public static final LocalDate JANUARY_UTC = LocalDate.parse("2020-01-01");
 	public static final LocalDate FEBRUARY_UTC = LocalDate.parse("2020-02-01");
 	public static final LocalDate MARCH_UTC = LocalDate.parse("2020-03-01");
@@ -76,10 +63,6 @@ public abstract class BaseTestDao {
 	public static final LocalDate OCTOBER_UTC = LocalDate.parse("2020-10-01");
 	public static final LocalDate NOVEMBER_UTC = LocalDate.parse("2020-11-01");
 	public static final LocalDate DECEMBER_UTC = LocalDate.parse("2020-12-01");
-
-	// Bad input
-//	public static final String INVALID_DATE = "notADate";
-//	public static final LocalDate INVALID_DATE = LocalDate.parse("notADate");
 
 	@Autowired
 	protected TimeSeriesDao tsDao;
