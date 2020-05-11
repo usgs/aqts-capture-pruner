@@ -35,7 +35,7 @@ public class PruneTimeSeries implements Function<RequestObject, ResultObject> {
 
 	protected ResultObject processRequest(RequestObject request) {
 
-		String date = request.getDate();
+		String date = request.getTime();
 		ResultObject result = new ResultObject();
 
 		if (null != date) {

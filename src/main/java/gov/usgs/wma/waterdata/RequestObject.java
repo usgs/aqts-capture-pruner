@@ -1,12 +1,13 @@
 package gov.usgs.wma.waterdata;
 
 public class RequestObject {
-	private String date;
+	// default cloudwatch event rule sends a json property called "time"
+	private String time;
 
-	public String getDate() {
-		return date;
+	public String getTime() {
+		return time;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setTime(String date) {
+		this.time = date;
 	}
 }

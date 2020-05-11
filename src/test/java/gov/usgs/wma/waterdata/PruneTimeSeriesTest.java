@@ -29,7 +29,7 @@ public class PruneTimeSeriesTest {
 
 	@Test
 	public void testFound() {
-		request.setDate("2020-01-01 10:10:10");
+		request.setTime("2020-01-01T10:10:10Z");
 		when(tsDao.pruneTimeSeries(anyString())).thenReturn(Object.class);
 		ResultObject result = pruneTs.apply(request);
 		assertNotNull(result);
@@ -38,7 +38,7 @@ public class PruneTimeSeriesTest {
 
 	@Test
 	public void testNullDate() {
-		request.setDate(null);
+		request.setTime(null);
 		ResultObject result = pruneTs.processRequest(request);
 		assertNotNull(result);
 		assertEquals(FAIL_STATUS, result.getPruneStatus());
