@@ -1,12 +1,19 @@
 package gov.usgs.wma.waterdata;
 
-public class RequestObject {
-	private String date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-	public String getDate() {
-		return date;
+import java.time.LocalDate;
+
+public class RequestObject {
+	// default cloudwatch event rule sends a json property called "time"
+	// in utc format "2020-01-01T18:44:49Z"
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate time;
+
+	public LocalDate getTime() {
+		return time;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setTime(LocalDate time) {
+		this.time = time;
 	}
 }

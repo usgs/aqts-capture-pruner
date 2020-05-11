@@ -10,6 +10,8 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class TimeSeriesDao {
 
@@ -23,13 +25,16 @@ public class TimeSeriesDao {
 	@Value("${AQTS_SCHEMA_NAME}")
 	private String aqtsSchemaName;
 
-	public Object pruneTimeSeries(String date) {
+	@Value("${MONTHS_TO_KEEP}")
+	private int monthsToKeep;
+
+	public Object pruneTimeSeries(LocalDate date) {
 		Object result = null;
 		try {
 			SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
 					.withFunctionName(PRUNE_TIME_SERIES_DATA_FUNCTION_NAME)
 					.withSchemaName(aqtsSchemaName);
-			SqlParameterSource in = new MapSqlParameterSource().addValue("prunedate", date);
+			SqlParameterSource in = new MapSqlParameterSource().addValue("prunedate", date.minusMonths(monthsToKeep));
 			result =  simpleJdbcCall.executeFunction(String.class, in);
 		} catch (Exception e) {
 			// TODO for now, just throw whatever exception we encounter, harden when we have a better idea

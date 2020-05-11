@@ -6,11 +6,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalDate;
+
+import static gov.usgs.wma.waterdata.BaseTestDao.JANUARY_DATE;
 import static gov.usgs.wma.waterdata.PruneTimeSeries.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
@@ -29,8 +32,8 @@ public class PruneTimeSeriesTest {
 
 	@Test
 	public void testFound() {
-		request.setDate("2020-01-01 10:10:10");
-		when(tsDao.pruneTimeSeries(anyString())).thenReturn(Object.class);
+		request.setTime(JANUARY_DATE);
+		when(tsDao.pruneTimeSeries(any(LocalDate.class))).thenReturn(Object.class);
 		ResultObject result = pruneTs.apply(request);
 		assertNotNull(result);
 		assertEquals(SUCCESS_STATUS, result.getPruneStatus());
@@ -38,7 +41,7 @@ public class PruneTimeSeriesTest {
 
 	@Test
 	public void testNullDate() {
-		request.setDate(null);
+		request.setTime(null);
 		ResultObject result = pruneTs.processRequest(request);
 		assertNotNull(result);
 		assertEquals(FAIL_STATUS, result.getPruneStatus());

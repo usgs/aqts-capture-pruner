@@ -20,6 +20,8 @@ import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 
+import java.time.LocalDate;
+
 @SpringBootTest(webEnvironment=WebEnvironment.NONE,
 		classes={DBTestConfig.class, TimeSeriesDao.class, PruneTimeSeries.class})
 
@@ -48,26 +50,19 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 @DirtiesContext
 public abstract class BaseTestDao {
 
-	// A few date formats
-	public static final String JANUARY_TIMESTAMP = "2020-01-01 10:10:10";
-	public static final String JANUARY_DATE = "2020-01-01";
-	public static final String JANUARY_TIMESTAMP_TZ = "2020-01-01 10:10:10 -05:00";
-
-	// Test all other months
-	public static final String FEBRUARY_TIMESTAMP = "2020-02-01 10:10:10";
-	public static final String MARCH_TIMESTAMP = "2020-03-01 10:10:10";
-	public static final String APRIL_TIMESTAMP = "2020-04-01 10:10:10";
-	public static final String MAY_TIMESTAMP = "2020-05-01 10:10:10";
-	public static final String JUNE_TIMESTAMP = "2020-06-01 10:10:10";
-	public static final String JULY_TIMESTAMP = "2020-07-01 10:10:10";
-	public static final String AUGUST_TIMESTAMP = "2020-08-01 10:10:10";
-	public static final String SEPTEMBER_TIMESTAMP = "2020-09-01 10:10:10";
-	public static final String OCTOBER_TIMESTAMP = "2020-10-01 10:10:10";
-	public static final String NOVEMBER_TIMESTAMP = "2020-11-01 10:10:10";
-	public static final String DECEMBER_TIMESTAMP = "2020-12-01 10:10:10";
-
-	// Bad input
-	public static final String INVALID_DATE = "notADate";
+	// dates
+	public static final LocalDate JANUARY_DATE = LocalDate.parse("2020-01-01");
+	public static final LocalDate FEBRUARY_DATE = LocalDate.parse("2020-02-01");
+	public static final LocalDate MARCH_DATE = LocalDate.parse("2020-03-01");
+	public static final LocalDate APRIL_DATE = LocalDate.parse("2020-04-01");
+	public static final LocalDate MAY_DATE = LocalDate.parse("2020-05-01");
+	public static final LocalDate JUNE_DATE = LocalDate.parse("2020-06-01");
+	public static final LocalDate JULY_DATE = LocalDate.parse("2020-07-01");
+	public static final LocalDate AUGUST_DATE = LocalDate.parse("2020-08-01");
+	public static final LocalDate SEPTEMBER_DATE = LocalDate.parse("2020-09-01");
+	public static final LocalDate OCTOBER_DATE = LocalDate.parse("2020-10-01");
+	public static final LocalDate NOVEMBER_DATE = LocalDate.parse("2020-11-01");
+	public static final LocalDate DECEMBER_DATE = LocalDate.parse("2020-12-01");
 
 	@Autowired
 	protected TimeSeriesDao tsDao;

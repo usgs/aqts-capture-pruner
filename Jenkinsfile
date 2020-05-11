@@ -2,9 +2,9 @@
 
 pipeline {
     agent {
-        node {
-            label 'project:any'
-        }
+        dockerfile {
+			label 'team:iow'
+		}
     }
     parameters {
         choice(choices: ['TEST', 'QA', 'PROD-EXTERNAL'], description: 'Deploy Stage (i.e. tier)', name: 'DEPLOY_STAGE')

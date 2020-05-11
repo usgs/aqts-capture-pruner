@@ -178,6 +178,7 @@
                         <AQTS_SCHEMA_NAME>schema_name</AQTS_SCHEMA_NAME>
                         <AQTS_SCHEMA_OWNER_USERNAME>schema_owner</AQTS_SCHEMA_OWNER_USERNAME>
                         <AQTS_SCHEMA_OWNER_PASSWORD>changeMe</AQTS_SCHEMA_OWNER_PASSWORD>
+                        <MONTHS_TO_KEEP>2</MONTHS_TO_KEEP>
                     </environmentVariables>
                 </configuration>
             </plugin>
@@ -192,6 +193,7 @@
                         <AQTS_SCHEMA_NAME>schema_name</AQTS_SCHEMA_NAME>
                         <AQTS_SCHEMA_OWNER_USERNAME>schema_owner</AQTS_SCHEMA_OWNER_USERNAME>
                         <AQTS_SCHEMA_OWNER_PASSWORD>changeMe</AQTS_SCHEMA_OWNER_PASSWORD>
+                        <MONTHS_TO_KEEP>2</MONTHS_TO_KEEP>
                     </environmentVariables>
                 </configuration>
                 <executions>
