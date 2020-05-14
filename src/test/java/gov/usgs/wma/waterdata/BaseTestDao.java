@@ -20,8 +20,6 @@ import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 
-import java.time.LocalDate;
-
 @SpringBootTest(webEnvironment=WebEnvironment.NONE,
 		classes={DBTestConfig.class, TimeSeriesDao.class, PruneTimeSeries.class})
 
@@ -51,18 +49,18 @@ import java.time.LocalDate;
 public abstract class BaseTestDao {
 
 	// dates
-	public static final LocalDate JANUARY_DATE = LocalDate.parse("2020-01-01");
-	public static final LocalDate FEBRUARY_DATE = LocalDate.parse("2020-02-01");
-	public static final LocalDate MARCH_DATE = LocalDate.parse("2020-03-01");
-	public static final LocalDate APRIL_DATE = LocalDate.parse("2020-04-01");
-	public static final LocalDate MAY_DATE = LocalDate.parse("2020-05-01");
-	public static final LocalDate JUNE_DATE = LocalDate.parse("2020-06-01");
-	public static final LocalDate JULY_DATE = LocalDate.parse("2020-07-01");
-	public static final LocalDate AUGUST_DATE = LocalDate.parse("2020-08-01");
-	public static final LocalDate SEPTEMBER_DATE = LocalDate.parse("2020-09-01");
-	public static final LocalDate OCTOBER_DATE = LocalDate.parse("2020-10-01");
-	public static final LocalDate NOVEMBER_DATE = LocalDate.parse("2020-11-01");
-	public static final LocalDate DECEMBER_DATE = LocalDate.parse("2020-12-01");
+	public static final String JANUARY_UTC = "2020-01-01T00:00:00Z";
+	public static final String FEBRUARY_UTC = "2020-02-01T00:00:00Z";
+	public static final String MARCH_UTC = "2020-03-01T00:00:00Z";
+	public static final String APRIL_UTC = "2020-04-01T00:00:00Z";
+	public static final String MAY_UTC = "2020-05-01T00:00:00Z";
+	public static final String JUNE_UTC = "2020-06-01T00:00:00Z";
+	public static final String JULY_UTC = "2020-07-01T00:00:00Z";
+	public static final String AUGUST_UTC = "2020-08-01T00:00:00Z";
+	public static final String SEPTEMBER_UTC = "2020-09-01T00:00:00Z";
+	public static final String OCTOBER_UTC = "2020-10-01T00:00:00Z";
+	public static final String NOVEMBER_UTC = "2020-11-01T00:00:00Z";
+	public static final String DECEMBER_UTC = "2020-12-01T00:00:00Z";
 
 	@Autowired
 	protected TimeSeriesDao tsDao;
