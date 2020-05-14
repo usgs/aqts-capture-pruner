@@ -2,9 +2,9 @@
 
 pipeline {
     agent {
-        dockerfile {
-			label 'team:iow'
-		}
+        node {
+            label 'team:iow'
+        }
     }
     parameters {
         choice(choices: ['TEST', 'QA', 'PROD-EXTERNAL'], description: 'Deploy Stage (i.e. tier)', name: 'DEPLOY_STAGE')
@@ -19,7 +19,9 @@ pipeline {
         }
         stage('get and install the zip file for lambda consumption') {
             agent {
-                dockerfile true
+                 dockerfile {
+                    label 'team:iow'
+                }
             }
             steps {
                 sh '''
