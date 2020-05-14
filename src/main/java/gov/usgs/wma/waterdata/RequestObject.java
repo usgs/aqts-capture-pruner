@@ -1,19 +1,23 @@
 package gov.usgs.wma.waterdata;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 
 public class RequestObject {
 	// default cloudwatch event rule sends a json property called "time"
 	// in utc format "2020-01-01T18:44:49Z"
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private LocalDate time;
+	private String time;
 
-	public LocalDate getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(LocalDate time) {
+	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public LocalDate getDate(String date) {
+		return LocalDate.ofInstant(Instant.parse(date), ZoneId.of(ZoneOffset.UTC.getId()));
 	}
 }

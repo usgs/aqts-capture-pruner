@@ -36,10 +36,11 @@ public class PruneTimeSeries implements Function<RequestObject, ResultObject> {
 
 	protected ResultObject processRequest(RequestObject request) {
 
-		LocalDate date = request.getTime();
 		ResultObject result = new ResultObject();
+		String time = request.getTime();
 
-		if (null != date) {
+		if (null != time) {
+			LocalDate date = request.getDate(time);
 			tsDao.pruneTimeSeries(date);
 			result.setPruneStatus(SUCCESS_STATUS);
 			LOG.debug(SUCCESS_MESSAGE);
