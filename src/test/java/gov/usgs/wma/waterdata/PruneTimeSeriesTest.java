@@ -12,6 +12,7 @@ import static gov.usgs.wma.waterdata.BaseTestDao.JANUARY_UTC;
 import static gov.usgs.wma.waterdata.PruneTimeSeries.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -42,6 +43,17 @@ public class PruneTimeSeriesTest {
 	@Test
 	public void testNullDate() {
 		request.setTime(null);
+		ResultObject result = pruneTs.processRequest(request);
+		assertNotNull(result);
+		assertEquals(FAIL_STATUS, result.getPruneStatus());
+		assertEquals(FAIL_MESSAGE_NULL_DATE, result.getPruneFailMessage());
+		assertThrows(RuntimeException.class, () -> pruneTs.apply(request), "should have thrown an exception but did not");
+	}
+
+	@Test
+	public void testNoTimeProvided() {
+		// explicitly not setting the time
+		assertNull(request.getTime());
 		ResultObject result = pruneTs.processRequest(request);
 		assertNotNull(result);
 		assertEquals(FAIL_STATUS, result.getPruneStatus());

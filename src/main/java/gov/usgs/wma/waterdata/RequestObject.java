@@ -17,7 +17,7 @@ public class RequestObject {
 		this.time = time;
 	}
 
-	public LocalDate getDate(String date) {
-		return LocalDate.ofInstant(Instant.parse(date), ZoneId.of(ZoneOffset.UTC.getId()));
+	public LocalDate getDate() {
+		return time == null ? null : LocalDate.ofInstant(Instant.parse(time), ZoneId.of(ZoneOffset.UTC.getId()));
 	}
 }
