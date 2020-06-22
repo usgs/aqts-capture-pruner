@@ -9,4 +9,6 @@
     <time_series_methods_may/>
     <time_series_points_may/>
     <time_series_qualifiers_may/>
+    <field_visit_header_info_may/>
+    <field_visit_readings_may/>
 </dataset>
