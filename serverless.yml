@@ -7,7 +7,7 @@ provider:
   runtime: java11
   memorySize: 768
   timeout: 60
-  logRetentionInDays: 30
+  logRetentionInDays: 90
   deploymentBucket:
     name: iow-cloud-applications
   stackTags:
@@ -30,6 +30,12 @@ functions:
   pruneTimeSeries:
     handler: gov.usgs.wma.waterdata.PruneTimeSeriesHandler
     role: arn:aws:iam::${self:custom.accountNumber}:role/csr-Lambda-Role
+    events:
+      - schedule:
+          name: aqts-capture-pruner-${self:provider.stage}-event
+          description: "Schedule event to prune IOW's aqts-capture transform database of stale data by invoking aqts-capture-pruner lambda"
+          rate: cron(0 0 1 * ? *)
+          enabled: true
     environment:
       FUNCTION_NAME: pruneTimeSeries
       AWS_DEPLOYMENT_REGION: ${self:provider.region}
