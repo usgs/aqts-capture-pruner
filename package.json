@@ -2,7 +2,7 @@
   "name": "aqts-capture-pruner",
   "description": "Deployment via serverless",
   "dependencies": {
-    "serverless": "^1.74.1",
+    "serverless": "^2.5.0",
     "serverless-plugin-git-variables": "^4.0.0"
   }
 }
