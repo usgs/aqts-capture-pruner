@@ -9,7 +9,7 @@ provider:
   timeout: 60
   logRetentionInDays: 90
   deploymentBucket:
-    name: iow-cloud-applications
+    name: ${opt:bucket, iow-cloud-applications}
   stackTags:
     "wma:applicationId": "AQTS Capture Time Series Pruner"
     "wma:contact": "Jim Kreft jkreft@usgs.gov"
@@ -21,7 +21,6 @@ provider:
 
 custom:
   exportGitVariables: false
-  accountNumber : ${ssm:/iow/aws/accountNumber}
   vpc:
     securityGroupIds: ${ssm:/iow/retriever-capture/${self:provider.stage}/securityGroupIds~split}
     subnetIds: ${ssm:/iow/aws/vpc/${self:provider.stage}/subnetIds~split}
@@ -31,7 +30,7 @@ custom:
 functions:
   pruneTimeSeries:
     handler: gov.usgs.wma.waterdata.PruneTimeSeriesHandler
-    role: arn:aws:iam::${self:custom.accountNumber}:role/csr-Lambda-Role
+    role: arn:aws:iam::#{AWS::AccountId}:role/csr-Lambda-Role
     events:
       - schedule:
           name: aqts-capture-pruner-${self:provider.stage}-event
@@ -49,6 +48,10 @@ functions:
       AQTS_SCHEMA_OWNER_PASSWORD: ${self:custom.db.connectInfo.SCHEMA_OWNER_PASSWORD}
       MONTHS_TO_KEEP: 2
     vpc: ${self:custom.vpc}
+
+plugins:
+  - serverless-plugin-git-variables
+  - serverless-pseudo-parameters
 
 package:
   artifact: aqts-capture-pruner-aws.jar
