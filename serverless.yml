@@ -7,19 +7,20 @@ provider:
   runtime: java11
   memorySize: 768
   timeout: 60
-  logRetentionInDays: 30
+  logRetentionInDays: 90
   deploymentBucket:
-    name: iow-cloud-applications
+    name: ${opt:bucket, iow-cloud-applications}
   stackTags:
     "wma:applicationId": "AQTS Capture Time Series Pruner"
     "wma:contact": "Jim Kreft jkreft@usgs.gov"
     "wma:environment": ${self:provider.stage}
     "wma:taggingVersion": ${opt:taggingVersion}
     "wma:costCenter": TBD
+    "wma:organization": IOW
+    "displayName": "Pruner"
 
 custom:
   exportGitVariables: false
-  accountNumber : ${ssm:/iow/aws/accountNumber}
   vpc:
     securityGroupIds: ${ssm:/iow/retriever-capture/${self:provider.stage}/securityGroupIds~split}
     subnetIds: ${ssm:/iow/aws/vpc/${self:provider.stage}/subnetIds~split}
@@ -29,7 +30,13 @@ custom:
 functions:
   pruneTimeSeries:
     handler: gov.usgs.wma.waterdata.PruneTimeSeriesHandler
-    role: arn:aws:iam::${self:custom.accountNumber}:role/csr-Lambda-Role
+    role: arn:aws:iam::#{AWS::AccountId}:role/csr-Lambda-Role
+    events:
+      - schedule:
+          name: aqts-capture-pruner-${self:provider.stage}-event
+          description: "Schedule event to prune IOW's aqts-capture transform database of stale data by invoking aqts-capture-pruner lambda"
+          rate: cron(0 0 1 * ? *)
+          enabled: true
     environment:
       FUNCTION_NAME: pruneTimeSeries
       AWS_DEPLOYMENT_REGION: ${self:provider.region}
@@ -41,6 +48,10 @@ functions:
       AQTS_SCHEMA_OWNER_PASSWORD: ${self:custom.db.connectInfo.SCHEMA_OWNER_PASSWORD}
       MONTHS_TO_KEEP: 2
     vpc: ${self:custom.vpc}
+
+plugins:
+  - serverless-plugin-git-variables
+  - serverless-pseudo-parameters
 
 package:
   artifact: aqts-capture-pruner-aws.jar
