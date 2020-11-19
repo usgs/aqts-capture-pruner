@@ -2,12 +2,18 @@ service: aqts-capture-pruner
 
 provider:
   name: aws
+  rolePermissionsBoundary:
+    Fn::Sub:
+      - "arn:aws:iam::${accountId}:policy/csr-Developer-Permissions-Boundary"
+      - accountId:
+          Ref: "AWS::AccountId"
   region: ${opt:region, 'us-west-2'}
   stage: ${opt:stage, 'TEST'}
   runtime: java11
   memorySize: 384
   timeout: 60
   logRetentionInDays: 90
+  vpc: ${self:custom.vpc}
   deploymentBucket:
     name: ${opt:bucket, iow-cloud-applications}
   stackTags:
@@ -26,11 +32,20 @@ custom:
     subnetIds: ${ssm:/iow/aws/vpc/${self:provider.stage}/subnetIds~split}
   db:
     connectInfo: ${ssm:/aws/reference/secretsmanager/NWCAPTURE-DB-${self:provider.stage}~true}
+  esLogs:
+    endpoint: ${ssm:/iow/aws/vpc/${self:provider.stage}/elasticsearchEndpoint}
+    index: ${self:service}
+    retentionInDays: 90
+    filterPattern: '?Exception ?ERROR ?WARN'
 
 functions:
   pruneTimeSeries:
     handler: gov.usgs.wma.waterdata.PruneTimeSeriesHandler
-    role: arn:aws:iam::#{AWS::AccountId}:role/csr-Lambda-Role
+    role:
+      Fn::Sub:
+        - arn:aws:iam::${accountId}:role/csr-Lambda-Role
+        - accountId:
+            Ref: AWS::AccountId
     events:
       - schedule:
           name: aqts-capture-pruner-${self:provider.stage}-event
@@ -47,11 +62,10 @@ functions:
       AQTS_SCHEMA_OWNER_USERNAME: ${self:custom.db.connectInfo.SCHEMA_OWNER_USERNAME}
       AQTS_SCHEMA_OWNER_PASSWORD: ${self:custom.db.connectInfo.SCHEMA_OWNER_PASSWORD}
       MONTHS_TO_KEEP: 2
-    vpc: ${self:custom.vpc}
 
 plugins:
   - serverless-plugin-git-variables
-  - serverless-pseudo-parameters
+  - serverless-es-logs
 
 package:
   artifact: aqts-capture-pruner-aws.jar
