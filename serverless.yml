@@ -50,7 +50,7 @@ functions:
       - schedule:
           name: aqts-capture-pruner-${self:provider.stage}-event
           description: "Schedule event to prune IOW's aqts-capture transform database of stale data by invoking aqts-capture-pruner lambda"
-          rate: cron(0 0 1 * ? *)
+          rate: cron(0 17 ? * 2#1 *)
           enabled: true
     reservedConcurrency: 1
     environment:
